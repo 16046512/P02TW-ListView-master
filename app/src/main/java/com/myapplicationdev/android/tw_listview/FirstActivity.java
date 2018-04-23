@@ -1,8 +1,11 @@
 package com.myapplicationdev.android.tw_listview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -11,8 +14,8 @@ import java.util.ArrayList;
 public class FirstActivity extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<Module> al;
-    ArrayAdapter<String> aa;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,22 +25,23 @@ public class FirstActivity extends AppCompatActivity {
         lv=(ListView)this.findViewById(R.id.lvYear);
 
 
-        al = new ArrayList<Module>();
-        al.add(new Module("Year 1"));
-        al.add(new Module("Year 2"));
-        al.add(new Module("Year 3"));
 
+        String year[]=new String[]{"Year 1","Year 2","Year 3"};
 
+        ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,year);
 
+        lv.setAdapter(adapter);
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String itemValues=(String)lv.getItemAtPosition(position);
+                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
 
-
-       // aa.notifyDataSetChanged();
-        
-        lv.setAdapter(aa);
-
-
-
+                intent.putExtra("position",itemValues);
+                startActivity(intent);
+            }
+        });
 
 
 
