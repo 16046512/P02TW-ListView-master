@@ -4,12 +4,11 @@ public class Module {
 
     private String year;
     private String course;
-    private boolean star;
-    public Module(String year,String course, boolean star) {
-
+    private boolean programming;
+    public Module(String year,String course, boolean isprog) {
         this.year = year;
         this.course = course;
-        this.star = star;
+        this.programming = programming;
     }
 
     public Module (String year) {
@@ -22,8 +21,8 @@ public class Module {
     public String getCourse() {
         return course;
     }
-    public boolean isStar() {
-        return star;
+    public boolean isprog() {
+        return programming;
     }
 
 }
