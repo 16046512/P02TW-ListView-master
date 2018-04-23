@@ -22,6 +22,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         lv=(ListView)this.findViewById(R.id.lvYear);
 
 
@@ -38,7 +39,7 @@ public class FirstActivity extends AppCompatActivity {
                 String itemValues=(String)lv.getItemAtPosition(position);
                 Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
 
-                intent.putExtra("position",itemValues);
+                intent.putExtra("year",itemValues);
                 startActivity(intent);
             }
         });

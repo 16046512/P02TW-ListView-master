@@ -1,19 +1,13 @@
 package com.myapplicationdev.android.tw_listview;
 
 public class Module {
-
-    private String year;
     private String course;
+    private String year;
     private boolean programming;
     public Module(String year,String course, boolean isprog) {
         this.year = year;
         this.course = course;
-        this.programming = programming;
-    }
-
-    public Module (String year) {
-
-        this.year = year;
+        this.programming = isprog;
     }
     public String getYear() {
         return year;

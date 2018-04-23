@@ -1,6 +1,7 @@
 package com.myapplicationdev.android.tw_listview;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,8 @@ public class ModuleAdapter extends ArrayAdapter<Module>{
 
     private ArrayList<Module>module;
     private Context context;
-    private TextView tvYear;
     private ImageView noprog;
+    private TextView course;
 
     public ModuleAdapter(Context context,int resource,ArrayList<Module>object){
         super(context,resource,object);
@@ -33,7 +34,7 @@ public class ModuleAdapter extends ArrayAdapter<Module>{
         View rowView = inflater.inflate(R.layout.courserow, parent, false);
 
         // Get the TextView object
-        tvYear = (TextView) rowView.findViewById(R.id.tvYear);
+        course = (TextView) rowView.findViewById(R.id.course);
         // Get the ImageView object
         noprog = (ImageView) rowView.findViewById(R.id.imgviewprog);
 
@@ -44,14 +45,15 @@ public class ModuleAdapter extends ArrayAdapter<Module>{
         Module currentModule = module.get(position);
         // Set the TextView to show the food
 
-        tvYear.setText(currentModule.getYear());
+        course.setText(currentModule.getCourse());
         // Set the image to star or nostar accordingly
-        if(currentModule.isprog()) {
-            noprog.setImageResource(R.drawable.prog);
-        }
-        else {
-            noprog.setImageResource(R.drawable.nonprog);
-        }
+        Log.i("ttt",currentModule.isprog()+""+currentModule.getCourse());
+            if (currentModule.isprog() == true) {
+                noprog.setImageResource(R.drawable.prog);
+            } else {
+                noprog.setImageResource(R.drawable.nonprog);
+            }
+
         // Return the nicely done up View to the ListView
         return rowView;
     }
